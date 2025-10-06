@@ -3,6 +3,7 @@
 import { z } from "zod";
 import { analyzeCodeAndProvideExplanation } from "@/ai/flows/analyze-code-and-provide-explanation";
 import { analyzeMCQAndProvideExplanation } from "@/ai/flows/analyze-mcq-and-provide-explanation";
+import { analyzeTextAndProvideExplanation } from "@/ai/flows/analyze-text-and-provide-explanation";
 import { sampleMCQ } from "./mock-data";
 
 const codeSchema = z.object({
@@ -12,6 +13,10 @@ const codeSchema = z.object({
 
 const mcqSchema = z.object({
     studentAnswer: z.string().min(1, "Please select an answer."),
+});
+
+const textSchema = z.object({
+  textSnippet: z.string().min(10, "Text snippet must be at least 10 characters."),
 });
 
 type FormState = {
@@ -64,4 +69,25 @@ export async function analyzeMCQAction(prevState: FormState, formData: FormData)
         console.error(e);
         return { data: null, error: e.message || "An unexpected error occurred." };
     }
+}
+
+export async function analyzeTextAction(prevState: FormState, formData: FormData): Promise<FormState> {
+  try {
+    const parsed = textSchema.safeParse({
+      textSnippet: formData.get("textSnippet"),
+    });
+
+    if (!parsed.success) {
+      return { data: null, error: parsed.error.errors.map((e) => e.message).join(", ") };
+    }
+
+    const result = await analyzeTextAndProvideExplanation({
+      textSnippet: parsed.data.textSnippet,
+    });
+    
+    return { data: result, error: null };
+  } catch (e: any) {
+    console.error(e);
+    return { data: null, error: e.message || "An unexpected error occurred." };
+  }
 }
