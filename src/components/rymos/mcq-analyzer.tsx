@@ -1,7 +1,6 @@
 "use client";
 
-import { useFormState } from "react-dom";
-import { useEffect } from "react";
+import { useActionState, useEffect } from "react";
 import { analyzeMCQAction } from "@/lib/actions";
 import { useToast } from "@/hooks/use-toast";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -17,7 +16,7 @@ const initialState = {
 };
 
 export function MCQAnalyzer() {
-  const [state, formAction] = useFormState(analyzeMCQAction, initialState);
+  const [state, formAction] = useActionState(analyzeMCQAction, initialState);
   const { toast } = useToast();
 
   useEffect(() => {

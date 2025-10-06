@@ -1,7 +1,6 @@
 "use client";
 
-import { useFormState } from "react-dom";
-import { useEffect } from "react";
+import { useActionState, useEffect } from "react";
 import { analyzeCodeAction } from "@/lib/actions";
 import { useToast } from "@/hooks/use-toast";
 import { Textarea } from "@/components/ui/textarea";
@@ -30,7 +29,7 @@ const languages = [
 ];
 
 export function CodeAnalyzer() {
-  const [state, formAction] = useFormState(analyzeCodeAction, initialState);
+  const [state, formAction] = useActionState(analyzeCodeAction, initialState);
   const { toast } = useToast();
 
   useEffect(() => {
