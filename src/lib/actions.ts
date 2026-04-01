@@ -13,6 +13,9 @@ const codeSchema = z.object({
 
 const mcqSchema = z.object({
     studentAnswer: z.string().min(1, "Please select an answer."),
+    question: z.string().optional(),
+    choices: z.string().optional(),
+    correctAnswer: z.string().optional(),
 });
 
 const textSchema = z.object({
@@ -51,15 +54,22 @@ export async function analyzeMCQAction(prevState: FormState, formData: FormData)
     try {
         const parsed = mcqSchema.safeParse({
             studentAnswer: formData.get("studentAnswer"),
+            question: formData.get("question"),
+            choices: formData.get("choices"),
+            correctAnswer: formData.get("correctAnswer"),
         });
 
         if (!parsed.success) {
             return { data: null, error: parsed.error.errors.map((e) => e.message).join(", ") };
         }
 
+        // Use custom question and choices if provided, otherwise use sample
+        const questionText = parsed.data.question || sampleMCQ.question;
+        const answerChoices = parsed.data.choices ? JSON.parse(parsed.data.choices) : sampleMCQ.choices;
+
         const result = await analyzeMCQAndProvideExplanation({
-            questionText: sampleMCQ.question,
-            answerChoices: sampleMCQ.choices,
+            questionText,
+            answerChoices,
             studentAnswer: parsed.data.studentAnswer,
         });
 

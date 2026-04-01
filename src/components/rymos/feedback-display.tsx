@@ -23,7 +23,7 @@ export function FeedbackDisplay({ result }: { result: AnalyzeMCQOutput }) {
   };
 
   return (
-    <Card className="rounded-2xl shadow-lg">
+    <Card className="rounded-2xl shadow-lg animate-fade-slide-up">
       <CardHeader>
         <CardTitle className="font-headline text-3xl">AI Analysis Complete</CardTitle>
         <CardDescription>
@@ -38,7 +38,7 @@ export function FeedbackDisplay({ result }: { result: AnalyzeMCQOutput }) {
             <TabsTrigger value="solution" className="rounded-lg flex items-center gap-2"><Check className="w-4 h-4 hidden sm:inline-block"/>Solution</TabsTrigger>
             <TabsTrigger value="pro_tip" className="rounded-lg flex items-center gap-2"><Lightbulb className="w-4 h-4 hidden sm:inline-block"/>Pro Tip</TabsTrigger>
           </TabsList>
-          <div className="mt-4 p-6 bg-secondary/50 rounded-xl min-h-[150px] flex items-center">
+          <div className="mt-4 p-6 bg-secondary/50 rounded-xl min-h-[300px] flex items-center">
             <TabsContent value="error_type">
                 <p className="text-lg font-semibold text-destructive">{result.error_type}</p>
             </TabsContent>
@@ -50,7 +50,7 @@ export function FeedbackDisplay({ result }: { result: AnalyzeMCQOutput }) {
                 <Button
                   size="icon"
                   variant="ghost"
-                  className="absolute top-2 right-2 h-7 w-7"
+                  className="absolute top-2 right-2 h-7 w-7 z-10"
                   onClick={handleCopy}
                 >
                   {copied ? (
@@ -59,8 +59,8 @@ export function FeedbackDisplay({ result }: { result: AnalyzeMCQOutput }) {
                     <Copy className="h-4 w-4" />
                   )}
                 </Button>
-                <pre className="p-4 bg-background rounded-lg overflow-x-auto">
-                  <code className="font-code text-sm">{result.correct_solution}</code>
+                <pre className="p-6 bg-background rounded-lg overflow-x-auto min-h-[250px] w-full">
+                  <code className="font-code text-base leading-relaxed whitespace-pre-wrap">{result.correct_solution}</code>
                 </pre>
               </div>
             </TabsContent>
