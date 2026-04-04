@@ -9,6 +9,7 @@
     |-- workflows
         |-- fbs-to-agy-export.md
 |-- .env
+|-- .env.example
 |-- .gitignore
 |-- .idx
     |-- dev.nix

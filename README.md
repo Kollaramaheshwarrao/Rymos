@@ -1,291 +1,348 @@
-# Rymos - AI-Powered Educational Platform
+# Rymos - AI-Powered Learning Mentor
 
-## Abstract
+> **"Decode Errors, Discover Brilliance"**
 
-Rymos is an intelligent tutoring system that leverages artificial intelligence to provide personalized learning experiences. The platform focuses on error analysis in coding education and provides intelligent feedback for multiple-choice questions, helping students learn more effectively through AI-driven insights.
+Rymos is an intelligent AI mentor that transforms your coding mistakes and misconceptions into powerful learning opportunities. Built with cutting-edge AI technology, it provides personalized feedback across multiple learning domains.
 
-## Table of Contents
+## 🎯 What Rymos Does
 
-- [Project Overview](#project-overview)
-- [Features](#features)
-- [Technology Stack](#technology-stack)
-- [Installation](#installation)
-- [Environment Setup](#environment-setup)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [API Endpoints](#api-endpoints)
-- [Components](#components)
-- [Methodology](#methodology)
-- [Results & Discussion](#results--discussion)
-- [Future Scope](#future-scope)
-- [Contributing](#contributing)
-- [License](#license)
+### **Core Functionality**
 
-## Project Overview
+**🔍 Multi-Domain Analysis Platform**
+- **Code Analyzer**: Analyzes programming code for errors, bugs, and improvements
+- **MCQ Practice**: Interactive multiple-choice questions with intelligent feedback
+- **Text Analyzer**: Analyzes written content for comprehension and learning
 
-### Objectives
-- Develop an AI-powered educational platform for personalized learning
-- Implement intelligent error analysis for coding education
-- Provide real-time feedback on multiple-choice questions
-- Create an adaptive learning environment using machine learning
+**🤖 AI-Powered Feedback System**
+- Uses Google Gemini 2.5 Flash for intelligent analysis
+- Provides step-by-step explanations in human-friendly language
+- Identifies error types and misconceptions
+- Offers practical tips and recommendations
 
-### Background
-Traditional learning systems often lack personalization and fail to provide meaningful feedback to students. Rymos addresses these limitations by incorporating artificial intelligence to analyze student responses and provide tailored educational content.
+**📝 Interactive MCQ System**
+- Manual question editing and creation
+- Dynamic answer choices (add/remove options)
+- Correct answer selection and validation
+- Real-time AI-powered feedback on student responses
 
-### Problem Statement
-Current educational platforms struggle with:
-- Generic feedback that doesn't address individual learning needs
-- Lack of intelligent error analysis in coding exercises
-- Limited personalization in learning paths
-- Insufficient real-time assessment capabilities
+## 🚀 Key Features
 
-### Aim of the Project
-To create an intelligent tutoring system that provides personalized learning experiences through AI-driven analysis of student performance, particularly focusing on coding education and MCQ feedback systems.
+### **1. Code Analysis Engine**
+```typescript
+// Analyzes code snippets across multiple programming languages
+- Error detection and explanation
+- Code quality assessment
+- Best practices recommendations
+- Performance optimization suggestions
+```
 
-## Features
+### **2. Intelligent MCQ System**
+- **Create Custom Questions**: Build your own multiple-choice questions
+- **Edit Mode**: Modify questions, answers, and correct options in real-time
+- **AI Feedback**: Get detailed explanations for incorrect answers
+- **Error Classification**: Identifies logic flaws, concept misunderstandings, and wrong assumptions
 
-### Core Features
-- **AI-Powered MCQ Analysis**: Intelligent feedback on multiple-choice questions
-- **Code Error Analysis**: Advanced error detection and explanation for coding problems
-- **Personalized Learning Paths**: Adaptive content based on student performance
-- **Real-time Feedback**: Instant analysis and suggestions
-- **Course Management**: Create, edit, and manage educational courses
-- **User Authentication**: Secure sign-in/sign-up system
-- **Progress Tracking**: Monitor student learning progress
+### **3. Text Analysis Capabilities**
+- Content comprehension analysis
+- Writing quality assessment
+- Learning objective alignment
+- Personalized improvement suggestions
 
-### Advanced Features
-- **Manual MCQ Editing**: Create and customize multiple-choice questions
-- **Dynamic Content Generation**: AI-generated course content
-- **Interactive Learning Interface**: User-friendly educational environment
-- **Comprehensive Analytics**: Detailed performance insights
+### **4. Advanced UI/UX**
+- **Modern Design**: Built with Tailwind CSS and Radix UI
+- **Dark/Light Theme**: Automatic theme switching
+- **Responsive Layout**: Works seamlessly on all devices
+- **Interactive Components**: Smooth animations and transitions
 
-## Technology Stack
+## 🛠️ Technology Stack
 
-### Frontend
-- **Next.js 15.3.8** - React framework for production
-- **React 18.3.1** - JavaScript library for building user interfaces
-- **Tailwind CSS** - Utility-first CSS framework
-- **Radix UI** - Low-level UI primitives
-- **Lucide React** - Beautiful & consistent icons
+### **Frontend Architecture**
+- **Next.js 15.3.8** - React framework with App Router
+- **React 18.3.1** - Component-based UI library
+- **TypeScript** - Type-safe development
+- **Tailwind CSS** - Utility-first styling
+- **Radix UI** - Accessible component primitives
 
-### Backend & AI
-- **Genkit AI** - AI development framework
-- **Google Gemini AI** - Large language model for intelligent responses
+### **AI & Backend**
+- **Google Gemini 2.5 Flash** - Advanced language model
+- **Firebase Genkit** - AI development framework
+- **Zod** - Schema validation and type safety
 - **Judge0 API** - Code execution and evaluation
-- **Zod** - TypeScript-first schema validation
 
-### Development Tools
-- **TypeScript** - Type-safe JavaScript
-- **ESLint** - Code linting
-- **PostCSS** - CSS processing
+### **Development Tools**
 - **Turbopack** - Fast bundler for development
+- **ESLint** - Code quality and consistency
+- **PostCSS** - CSS processing and optimization
 
-## Installation
+## 📁 Project Structure
 
-### Prerequisites
-- Node.js (v18 or higher)
-- npm or yarn package manager
+```
+src/
+├── ai/                          # AI Processing Engine
+│   ├── flows/                   # AI Analysis Flows
+│   │   ├── analyze-code-and-provide-explanation.ts
+│   │   ├── analyze-mcq-and-provide-explanation.ts
+│   │   └── analyze-text-and-provide-explanation.ts
+│   ├── genkit.ts               # AI Configuration
+│   └── dev.ts                  # Development Setup
+├── app/                        # Next.js App Router
+│   ├── layout.tsx              # Root Layout
+│   ├── page.tsx                # Landing Page
+│   └── globals.css             # Global Styles
+├── components/                 # React Components
+│   ├── rymos/                  # Core Rymos Components
+│   │   ├── rymos-app.tsx       # Main Application
+│   │   ├── mcq-analyzer.tsx    # MCQ System
+│   │   ├── code-analyzer.tsx   # Code Analysis
+│   │   ├── text-analyzer.tsx   # Text Analysis
+│   │   └── feedback-display.tsx # AI Feedback UI
+│   └── ui/                     # Reusable UI Components
+├── lib/                        # Utility Functions
+│   ├── actions.ts              # Server Actions
+│   ├── utils.ts                # Helper Functions
+│   └── mock-data.ts            # Sample Data
+└── services/                   # External Services
+    └── judge0.ts               # Code Execution Service
+```
+
+## 🎮 How to Use Rymos
+
+### **For Students**
+
+**1. Code Analysis**
+```javascript
+// Paste your code snippet
+function fibonacci(n) {
+    if (n <= 1) return n;
+    return fibonacci(n-1) + fibonacci(n-2);
+}
+```
+- Select programming language
+- Get AI-powered error analysis
+- Receive optimization suggestions
+- Learn best practices
+
+**2. MCQ Practice**
+- Answer multiple-choice questions
+- Get instant AI feedback on wrong answers
+- Understand error types and reasoning
+- Learn from detailed explanations
+
+**3. Text Analysis**
+- Submit written content
+- Receive comprehension feedback
+- Get improvement suggestions
+- Enhance learning outcomes
+
+### **For Educators**
+
+**1. Create Custom MCQs**
+- Click "Edit MCQ" button
+- Write custom questions
+- Add/remove answer choices
+- Set correct answers
+- Save and use immediately
+
+**2. Monitor Learning**
+- Track student progress
+- Analyze common mistakes
+- Customize content difficulty
+- Provide targeted feedback
+
+## 🚀 Quick Start
+
+### **Prerequisites**
+- Node.js 18+ 
+- npm or yarn
 - Git
 
-### Steps
+### **Installation**
 
-1. **Clone the repository**
+1. **Clone Repository**
    ```bash
    git clone https://github.com/Kollaramaheshwarrao/Rymos.git
    cd Rymos
    ```
 
-2. **Install dependencies**
+2. **Install Dependencies**
    ```bash
    npm install
    ```
 
-3. **Set up environment variables**
+3. **Environment Setup**
    ```bash
    cp .env.example .env
    ```
 
-4. **Configure API keys** (see Environment Setup below)
+4. **Configure API Keys**
+   ```env
+   # Add to .env file
+   GEMINI_API_KEY=your_gemini_api_key_here
+   JUDGE0_API_KEY=your_judge0_api_key_here
+   JUDGE0_API_HOST=https://judge0-ce.p.rapidapi.com
+   ```
 
-5. **Run the development server**
+5. **Start Development Server**
    ```bash
    npm run dev
    ```
 
-6. **Open your browser**
-   Navigate to `http://localhost:3000`
+6. **Open Browser**
+   ```
+   http://localhost:3000
+   ```
 
-## Environment Setup
+## 🔑 API Keys Setup
 
-Create a `.env` file in the root directory and add the following variables:
+### **Google Gemini AI**
+1. Visit [Google AI Studio](https://aistudio.google.com/)
+2. Create new project
+3. Generate API key
+4. Add to `.env` file
 
+### **Judge0 API**
+1. Go to [RapidAPI Judge0](https://rapidapi.com/judge0-official/api/judge0-ce)
+2. Subscribe to service
+3. Copy API key
+4. Add to `.env` file
+
+## 🎨 User Interface
+
+### **Landing Page**
+- Hero section with compelling messaging
+- Call-to-action buttons
+- Gradient backgrounds with grid patterns
+- Responsive design for all devices
+
+### **Main Application**
+- **Tabbed Interface**: Code, MCQ, and Text analyzers
+- **Interactive Forms**: Dynamic input fields and controls
+- **Real-time Feedback**: Instant AI-powered responses
+- **Modern Styling**: Clean, professional appearance
+
+### **MCQ System Features**
+- **Edit Mode**: Toggle between view and edit modes
+- **Dynamic Choices**: Add/remove answer options
+- **Correct Answer Selection**: Mark correct answers
+- **Large Solution Display**: Enhanced readability
+- **Copy Functionality**: Easy solution copying
+
+## 🧠 AI Analysis Capabilities
+
+### **Error Type Detection**
+- **Logic Flaws**: Identifies reasoning errors
+- **Concept Misunderstandings**: Spots knowledge gaps
+- **Wrong Assumptions**: Catches incorrect premises
+
+### **Feedback Structure**
+```json
+{
+  "error_type": "Logic flaw",
+  "explanation": "Step-by-step explanation in simple language",
+  "correct_solution": "The right answer with reasoning",
+  "pro_tip": "Practical advice to avoid similar mistakes"
+}
+```
+
+### **Analysis Features**
+- **Human-friendly Language**: Clear, encouraging explanations
+- **Step-by-step Breakdown**: Detailed reasoning process
+- **Practical Tips**: Actionable improvement advice
+- **Motivational Tone**: Positive, learning-focused feedback
+
+## 🌐 Deployment
+
+### **Vercel Deployment (Recommended)**
+1. Connect GitHub repository to Vercel
+2. Configure environment variables
+3. Deploy with one click
+4. Automatic deployments on git push
+
+### **Environment Variables for Production**
 ```env
-# Judge0 API Configuration
+GEMINI_API_KEY=your_production_gemini_key
+JUDGE0_API_KEY=your_production_judge0_key
 JUDGE0_API_HOST=https://judge0-ce.p.rapidapi.com
-JUDGE0_API_KEY=your_judge0_api_key_here
-
-# Google Gemini AI Configuration
-GEMINI_API_KEY=your_gemini_api_key_here
 ```
 
-### Getting API Keys
+## 📊 Performance Features
 
-1. **Judge0 API Key**
-   - Visit [RapidAPI Judge0](https://rapidapi.com/judge0-official/api/judge0-ce)
-   - Subscribe to the service
-   - Copy your API key
+- **Fast Loading**: Optimized with Next.js and Turbopack
+- **Responsive Design**: Works on desktop, tablet, and mobile
+- **Real-time Analysis**: Quick AI response times
+- **Efficient Caching**: Optimized data fetching
+- **Progressive Enhancement**: Works without JavaScript
 
-2. **Gemini API Key**
-   - Go to [Google AI Studio](https://aistudio.google.com/)
-   - Create a new project
-   - Generate an API key
+## 🔒 Security & Privacy
 
-## Usage
+- **API Key Protection**: Environment variables for sensitive data
+- **Input Validation**: Zod schema validation
+- **Error Handling**: Graceful error management
+- **Type Safety**: TypeScript for runtime safety
 
-### For Students
-1. **Sign Up/Sign In**: Create an account or log in
-2. **Browse Courses**: Explore available educational content
-3. **Take Assessments**: Answer MCQs and coding problems
-4. **Receive Feedback**: Get AI-powered analysis and suggestions
-5. **Track Progress**: Monitor your learning journey
+## 🎯 Use Cases
 
-### For Educators
-1. **Create Courses**: Design educational content
-2. **Add Assessments**: Create MCQs and coding exercises
-3. **Monitor Students**: Track student progress and performance
-4. **Customize Content**: Edit and update course materials
+### **Educational Institutions**
+- Supplement traditional teaching methods
+- Provide instant feedback to students
+- Create custom assessment materials
+- Track learning progress
 
-## Project Structure
+### **Individual Learners**
+- Practice coding skills
+- Test knowledge with MCQs
+- Get personalized feedback
+- Learn from mistakes
 
-```
-src/
-├── ai/                     # AI-related functionality
-│   ├── flows/             # AI processing flows
-│   ├── dev.ts            # Development configuration
-│   └── genkit.ts         # Genkit AI setup
-├── app/                   # Next.js app directory
-│   ├── api/              # API routes
-│   │   ├── courses/      # Course management
-│   │   ├── enroll-course/ # Course enrollment
-│   │   ├── generate-course-content/ # AI content generation
-│   │   └── generate-course-layout/  # Course structure
-│   ├── course/           # Course viewing pages
-│   ├── workspace/        # Course editing workspace
-│   ├── layout.tsx        # Root layout
-│   └── page.tsx          # Home page
-├── components/           # Reusable components
-│   ├── rymos/           # Project-specific components
-│   └── ui/              # UI components
-├── hooks/               # Custom React hooks
-├── lib/                 # Utility functions
-└── services/           # External service integrations
-```
+### **Corporate Training**
+- Employee skill development
+- Technical assessment
+- Knowledge validation
+- Performance tracking
 
-## API Endpoints
+## 🚀 Future Enhancements
 
-### Course Management
-- `GET /api/courses` - Retrieve all courses
-- `POST /api/enroll-course` - Enroll in a course
-- `POST /api/generate-course-content` - Generate AI course content
-- `POST /api/generate-course-layout` - Create course structure
+### **Planned Features**
+- **Multi-language Support**: International accessibility
+- **Advanced Analytics**: Detailed learning insights
+- **Collaborative Learning**: Peer-to-peer features
+- **Mobile App**: Native mobile applications
+- **Voice Integration**: Speech-to-text capabilities
 
-### Authentication
-- `POST /api/auth/signin` - User sign in
-- `POST /api/auth/signup` - User registration
-
-## Components
-
-### Key Components
-- **MCQAnalyzer**: AI-powered multiple-choice question analysis
-- **FeedbackDisplay**: Intelligent feedback presentation
-- **ChapterContent**: Course content display
-- **ChapterListSidebar**: Course navigation
-- **AddNewCourseDialog**: Course creation interface
-- **CourseCard**: Course information display
-
-## Methodology
-
-### Model Implementation
-The system uses a multi-layered approach:
-
-1. **Data Collection**: Gather student responses and performance data
-2. **AI Processing**: Analyze responses using Gemini AI
-3. **Feedback Generation**: Create personalized feedback
-4. **Content Adaptation**: Adjust learning materials based on performance
-
-### Design Requirements
-- **Scalability**: Handle multiple concurrent users
-- **Responsiveness**: Fast response times for AI analysis
-- **User Experience**: Intuitive and engaging interface
-- **Accuracy**: Reliable AI-powered assessments
-
-## Results & Discussion
-
-### Key Achievements
-- Successfully implemented AI-powered feedback system
-- Created intuitive course management interface
-- Achieved real-time response analysis
-- Developed scalable architecture for educational content
-
-### Performance Metrics
-- Response time: < 2 seconds for AI analysis
-- User engagement: Improved learning outcomes
-- System reliability: 99.9% uptime
-- Feedback accuracy: High precision in error detection
-
-## Future Scope
-
-### Planned Features
-- **Advanced Analytics**: Detailed learning analytics dashboard
-- **Mobile Application**: Native mobile app development
-- **Collaborative Learning**: Peer-to-peer learning features
-- **Voice Integration**: Voice-based interactions
-- **Multilingual Support**: Support for multiple languages
-- **Advanced AI Models**: Integration with latest AI technologies
-
-### Technical Improvements
-- **Performance Optimization**: Enhanced loading speeds
+### **Technical Improvements**
 - **Database Integration**: Persistent data storage
-- **Real-time Collaboration**: Live editing capabilities
-- **Advanced Security**: Enhanced authentication and authorization
+- **User Authentication**: Account management
+- **Progress Tracking**: Learning analytics
+- **Real-time Collaboration**: Live editing features
 
-## Deployment
-
-### Vercel Deployment
-1. Connect your GitHub repository to Vercel
-2. Configure environment variables in Vercel dashboard
-3. Deploy automatically on push to main branch
-
-### Environment Variables for Production
-Add the following in your Vercel dashboard:
-- `JUDGE0_API_KEY`
-- `GEMINI_API_KEY`
-- `JUDGE0_API_HOST`
-
-## Contributing
+## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+2. Create feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add AmazingFeature'`)
+4. Push to branch (`git push origin feature/AmazingFeature`)
+5. Open Pull Request
 
-## License
+## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Contact
+## 👨‍💻 Author
 
-**Project Maintainer**: Kollaramaheshwarrao
-**Repository**: [https://github.com/Kollaramaheshwarrao/Rymos](https://github.com/Kollaramaheshwarrao/Rymos)
+**Kollaramaheshwarrao**
+- GitHub: [@Kollaramaheshwarrao](https://github.com/Kollaramaheshwarrao)
+- Project: [Rymos](https://github.com/Kollaramaheshwarrao/Rymos)
 
-## Acknowledgments
+## 🙏 Acknowledgments
 
-- Google Gemini AI for intelligent response generation
-- Judge0 for code execution capabilities
-- Next.js team for the excellent framework
-- Open source community for various libraries and tools
+- **Google Gemini AI** - Advanced language model capabilities
+- **Judge0** - Code execution and evaluation services
+- **Next.js Team** - Excellent React framework
+- **Vercel** - Seamless deployment platform
+- **Open Source Community** - Amazing tools and libraries
 
 ---
 
-**Built with ❤️ using Next.js and AI**
+**Built with ❤️ using Next.js, TypeScript, and AI**
+
+*Transform your mistakes into learning opportunities with Rymos - Your AI Learning Mentor*
